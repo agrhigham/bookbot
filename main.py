@@ -1,18 +1,20 @@
 def main():
-    
     path_to_file = "books/frankenstein.txt"
     text = get_book_text(path_to_file)
     num_words = get_num_words(text)
-    print(f"--- Begin report of {path_to_file} ---")
-    print(f"{num_words} words found in the document")
     chars_dict = get_character_count(text)
     list_of_dicts = get_list_of_dicts(chars_dict)
+    print()
+    print(f"--- Begin report of {path_to_file} ---")
+    print()
+    print(f"{num_words} words found in the document")
+    print()
     list_of_dicts.sort(reverse=True, key=sort_on)
     for item in list_of_dicts:
-        print (f"The {item['character']} character was found {item['count']} times")
-   
-   
-    
+        print (f"The letter {item['character']} was found {item['count']} times")
+    print()
+    print("--- End of report ---")
+      
 def get_num_words(text):
     words = text.split()
     return len(words)
@@ -41,7 +43,5 @@ def get_list_of_dicts(chars_dict):
 
 def sort_on(list_of_dicts):
     return list_of_dicts["count"]
-
-
     
 main()
